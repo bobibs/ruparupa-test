@@ -20,8 +20,10 @@ export default function Header() {
   return (
     <div className={styles.root}>
       <div className={styles.section}>
-        <Image alt='Icon' height='30' src={IconPokeball} width='30' />
-        <div className={styles.name}>Pokedex</div>
+        <div className={styles.logo} onClick={() => clickMenu('/')}>
+          <Image alt='Icon' height='30' src={IconPokeball} width='30' />
+          <div className={styles.name}>Pokedex</div>
+        </div>
       </div>
       <div className={`${styles.section} ${styles.sectionRight}`}>
         <div className={styles.menu} onClick={() => clickMenu('/')}>
