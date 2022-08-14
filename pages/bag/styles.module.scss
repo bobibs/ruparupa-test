@@ -37,7 +37,7 @@
 
 .data {
     display: grid;
-    grid-template-columns: repeat(5, auto) !important;
+    grid-template-columns: repeat(5, auto);
     gap: 3rem;
     padding: 2rem;
 }
