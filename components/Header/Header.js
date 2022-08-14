@@ -21,7 +21,14 @@ export default function Header() {
     <div className={styles.root}>
       <div className={styles.section}>
         <div className={styles.logo} onClick={() => clickMenu('/')}>
-          <Image alt='Icon' height='30' src={IconPokeball} width='30' />
+          <div className={styles.images}>
+            <Image
+              alt='Icon'
+              src={IconPokeball}
+              layout='fill'
+              objectFit='contain'
+            />
+          </div>
           <div className={styles.name}>Pokedex</div>
         </div>
       </div>
