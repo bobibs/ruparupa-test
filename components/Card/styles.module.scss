@@ -1,0 +1,57 @@
+.root {
+    width: 12.5rem;
+    border-radius: 1rem;
+    border: 0.125rem solid #ED5564;
+    padding: 0 0 1rem 0;
+}
+
+.images {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 1rem 0;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.title {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 1rem 0;
+}
+
+.text {
+    text-transform: capitalize;
+    color: #FFFFFF;
+    font-weight: 700;
+    cursor: default;
+}
+
+.action {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    cursor: pointer;
+    opacity: 0.75;
+}
+
+.icon:hover {
+    opacity: 1;
+}
+
+.loading {
+    width: 12.5rem;
+    border-radius: 1rem;
+    border: 0.125rem solid #ED5564;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,51 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.noData {
+    height: 88vh;
+    width: 10rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.noText {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 1rem 0;
+}
+
+.noButton {
+    width: 10rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.data {
+    display: grid;
+    grid-template-columns: repeat(5, auto) !important;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.loading {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

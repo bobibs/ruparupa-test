@@ -1,0 +1,17 @@
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.125rem solid #ED5564;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    background: #ED5564;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.root:hover {
+    opacity: 1;
+}
