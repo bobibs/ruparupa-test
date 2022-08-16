@@ -5,13 +5,10 @@ import IconClear from '../../public/ic-clear.svg';
 import styles from './styles.module.scss';
 
 export default function InputSearch(props) {
-  const { getValue, onClearData } = props;
+  const { getValue } = props;
   const [value, setValue] = useState('');
 
-  const clearValue = () => {
-    onClearData();
-    setValue('');
-  };
+  const clearValue = () => setValue('');
 
   useEffect(() => {
     getValue(value);
@@ -45,10 +42,8 @@ export default function InputSearch(props) {
 
 InputSearch.defaultProps = {
   getValue: () => {},
-  onClearData: () => {},
 };
 
 InputSearch.propTypes = {
   getValue: PropTypes.func,
-  onClearData: PropTypes.func,
 };

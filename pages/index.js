@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 import IconRefresh from '../public/ic-refresh.svg';
 import IconSearch from '../public/ic-search.svg';
 import IconSuccess from '../public/ic-success.svg';
@@ -31,18 +32,6 @@ export default function Home() {
   };
 
   const refreshData = () => {
-    setLoading(true);
-    getData().then(({ results }) => {
-      setData(
-        results.map((i) => ({
-          id: parseInt(i.url.split('/')[6]),
-        })),
-        setLoading(false),
-      );
-    });
-  };
-
-  const clearData = () => {
     setLoading(true);
     getData().then(({ results }) => {
       setData(
@@ -110,13 +99,13 @@ export default function Home() {
 
   return (
     <div className={styles.root}>
+      <Head>
+        <title>Pokedex</title>
+      </Head>
       <Header />
       <div className={styles.section}>
         <div className={styles.filter}>
-          <InputSearch
-            getValue={(val) => getSearchValue(val)}
-            onClearData={clearData}
-          />
+          <InputSearch getValue={(val) => getSearchValue(val)} />
           <Button label={<SearchLabel />} onClick={updateData} />
           <Button label={<RefreshLabel />} onClick={refreshData} />
         </div>
