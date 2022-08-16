@@ -1,3 +1,5 @@
+@use '../../styles/variables' as v;
+
 .root {
     display: flex;
     justify-content: center;
@@ -12,7 +14,7 @@
 }
 
 .modal {
-    background: #2C3333;
+    background: v.$background-color;
     border-radius: 0.5rem;
 }
 
@@ -38,7 +40,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.125rem;
-    color: #ED5564;
+    color: v.$primary-color;
     margin: 1.5rem 0 0 0;
 }
 
@@ -58,7 +60,7 @@
     justify-content: center;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #ED5564;
+    color: v.$primary-color;
 }
 
 .stat {
@@ -72,19 +74,19 @@
     font-size: 0.875rem;
     font-weight: 600;
     text-transform: capitalize;
-    color: #ED5564;
+    color: v.$primary-color;
 }
 
 .statBar {
     height: 0.5rem;
     border-radius: 0.5rem;
-    background: #FFFFFF;
+    background: v.$white-color;
 }
 
 .statPrecentage {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    color: #FFFFFF;
+    color: v.$white-color;
     font-size: 0.875rem;
 }

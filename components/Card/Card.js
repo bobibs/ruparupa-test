@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
+import { getDetailData } from '../../pages/api';
 import Loading from '../Loading';
 import Modal from '../Modal';
 import IconAdd from '../../public/ic-add.svg';
@@ -15,15 +16,11 @@ export default function Card(props) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const fetchImage = async (id) => {
-      setLoading(true);
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-      const resData = await res.json();
-      setDetail(resData);
+    setLoading(true);
+    getDetailData(data.id).then((res) => {
+      setDetail(res);
       setLoading(false);
-    };
-
-    fetchImage(data.id);
+    });
   }, []);
 
   useEffect(() => {

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
+import { getData, searchData } from './api';
+import { gridColumn } from '../utils/format';
+import { getPokeId, setPokeId } from '../utils/storage';
 import IconRefresh from '../public/ic-refresh.svg';
 import IconSearch from '../public/ic-search.svg';
 import IconSuccess from '../public/ic-success.svg';
@@ -18,17 +21,20 @@ export default function Home() {
   const [show, setShow] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const randomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
+  const getSearchValue = (val) => setSearchValue(val);
 
-  const getData = async () => {
-    const offset = randomNumber(1, 1000);
-    const res = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=5`,
-    );
-    const data = await res.json();
-    return data;
+  const addData = (id) => {
+    const pokeId = getPokeId();
+
+    if (pokeId === null) {
+      setPokeId([id]);
+    } else {
+      if (!JSON.parse(pokeId).includes(id)) {
+        const newData = [...JSON.parse(pokeId), id];
+        setPokeId(newData);
+        setShow(true);
+      }
+    }
   };
 
   const refreshData = () => {
@@ -43,39 +49,33 @@ export default function Home() {
     });
   };
 
-  const getSearchValue = (val) => setSearchValue(val);
-
-  const gridColumn = (data) => {
-    let col = '';
-    data.forEach(() => (col += 'auto '));
-    return col;
-  };
-
-  const updateData = async () => {
+  const updateData = () => {
     setLoading(true);
-    const res = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${searchValue.toLowerCase()}`,
-    );
-    const data = await res.json();
-    setData([data]);
-    setLoading(false);
+    searchData(searchValue).then((res) => {
+      setData([res]);
+      setLoading(false);
+    });
   };
 
-  const addData = (id) => {
-    const pokeId = window.localStorage.getItem('pokeId');
-    const setPokeId = (data) =>
-      window.localStorage.setItem('pokeId', JSON.stringify(data));
+  const RefreshLabel = () => (
+    <Image
+      alt='Icon'
+      className={styles.iconRefresh}
+      height='20'
+      src={IconRefresh}
+      width='20'
+    />
+  );
 
-    if (pokeId === null) {
-      setPokeId([id]);
-    } else {
-      if (!JSON.parse(pokeId).includes(id)) {
-        const newData = [...JSON.parse(pokeId), id];
-        setPokeId(newData);
-        setShow(true);
-      }
-    }
-  };
+  const SearchLabel = () => (
+    <Image
+      alt='Icon'
+      className={styles.iconRefresh}
+      height='20'
+      src={IconSearch}
+      width='20'
+    />
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -130,23 +130,3 @@ export default function Home() {
     </div>
   );
 }
-
-const RefreshLabel = () => (
-  <Image
-    alt='Icon'
-    className={styles.iconRefresh}
-    height='20'
-    src={IconRefresh}
-    width='20'
-  />
-);
-
-const SearchLabel = () => (
-  <Image
-    alt='Icon'
-    className={styles.iconRefresh}
-    height='20'
-    src={IconSearch}
-    width='20'
-  />
-);

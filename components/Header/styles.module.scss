@@ -1,3 +1,5 @@
+@use '../../styles/variables' as v;
+
 .root {
     height: 4rem;
     width: 100%;
@@ -26,7 +28,7 @@
 }
 
 .name {
-    color: #FFFFFF;
+    color: v.$white-color;
     font-weight: 600;
     font-size: 1.25rem;
     margin: 0 0 0 1rem;
@@ -48,7 +50,7 @@
 }
 
 .path {
-    background: #ED5564;
+    background: v.$primary-color;
 }
 
 .images {

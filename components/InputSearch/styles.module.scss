@@ -1,5 +1,7 @@
+@use '../../styles/variables' as v;
+
 .root {
-    border: 0.125rem solid #ED5564;
+    border: 0.125rem solid v.$primary-color;
     border-radius: 0.25rem;
     display: grid;
     grid-template-columns: 17.5rem 2rem;
@@ -12,11 +14,11 @@
     padding: 0 0.5rem;
     font-size: 0.875rem;
     border-radius: 0.25rem 0 0 0.25rem;
-    color: #FFFFFF;
+    color: v.$white-color;
 }
 
 .input::placeholder {
-    color: #FFFFFF;
+    color: v.$white-color;
     font-size: 0.875rem;
 }
 

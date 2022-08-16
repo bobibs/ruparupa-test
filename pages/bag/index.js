@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { getDetailData } from '../api';
+import { gridColumn } from '../../utils/format';
+import { getPokeId, setPokeId } from '../../utils/storage';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
 import SuccessNotification from '../../components/SuccessNotification';
-import styles from './styles.module.scss';
+import styles from '../../styles/Bag.module.scss';
 
 export default function Bag() {
   const [data, setData] = useState([]);
@@ -15,23 +18,11 @@ export default function Bag() {
   const router = useRouter();
   const clickBack = () => router.push('/');
 
-  const getDetailData = async (id) => {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const data = await res.json();
-    return data;
-  };
-
-  const gridColumn = (data) => {
-    let col = '';
-    data.forEach(() => (col += 'auto '));
-    return col;
-  };
-
   const deleteData = (id) => {
     setLoading(true);
-    const pokeId = window.localStorage.getItem('pokeId');
+    const pokeId = getPokeId();
     const newPokeId = JSON.parse(pokeId).filter((i) => i !== id);
-    window.localStorage.setItem('pokeId', JSON.stringify(newPokeId));
+    setPokeId(newPokeId);
     setData([]);
 
     if (newPokeId.length) {
@@ -45,10 +36,9 @@ export default function Bag() {
   };
 
   useEffect(() => {
-    const listId = window.localStorage.getItem('pokeId');
+    const listId = getPokeId();
     if (listId !== null) {
       if (listId.length) {
-        const parseId = JSON.parse(listId);
         JSON.parse(listId).map((i) => {
           getDetailData(i).then((res) => {
             setData((data) => [...data, res]);

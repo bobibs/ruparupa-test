@@ -1,3 +1,5 @@
+@use './variables' as v;
+
 .root {
     display: flex;
     flex-direction: column;
@@ -24,7 +26,7 @@
 .noText {
     font-size: 2rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: v.$white-color;
     margin: 0 0 1rem 0;
 }
 
@@ -40,6 +42,7 @@
     grid-template-columns: repeat(5, auto);
     gap: 3rem;
     padding: 2rem;
+    min-height: 21rem;
 }
 
 .loading {

@@ -1,14 +1,16 @@
+@use '../../styles/variables' as v;
+
 .root {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0.125rem solid #ED5564;
+    border: 0.125rem solid v.$primary-color;
     border-radius: 0.25rem;
     width: 100%;
     padding: 0 0.5rem;
     cursor: pointer;
-    background: #ED5564;
-    color: #FFFFFF;
+    background: v.$primary-color;
+    color: v.$white-color;
     font-weight: 700;
 }
 

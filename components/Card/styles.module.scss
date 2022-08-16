@@ -1,7 +1,9 @@
+@use '../../styles/variables' as v;
+
 .root {
     width: 12.5rem;
     border-radius: 1rem;
-    border: 0.125rem solid #ED5564;
+    border: 0.125rem solid v.$primary-color;
     padding: 0 0 1rem 0;
 }
 
@@ -25,7 +27,7 @@
 
 .text {
     text-transform: capitalize;
-    color: #FFFFFF;
+    color: v.$white-color;
     font-weight: 700;
     cursor: default;
 }
@@ -50,7 +52,7 @@
 .loading {
     width: 12.5rem;
     border-radius: 1rem;
-    border: 0.125rem solid #ED5564;
+    border: 0.125rem solid v.$primary-color;
     display: flex;
     align-items: center;
     justify-content: center;
