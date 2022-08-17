@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import { getData, searchData } from './api';
-import { gridColumn } from '../utils/format';
 import { getPokeId, setPokeId } from '../utils/storage';
 import IconRefresh from '../public/ic-refresh.svg';
 import IconSearch from '../public/ic-search.svg';
@@ -57,7 +56,7 @@ export default function Home() {
     });
   };
 
-  const RefreshLabel = () => (
+  const refreshLabel = () => (
     <Image
       alt='Icon'
       className={styles.iconRefresh}
@@ -67,7 +66,7 @@ export default function Home() {
     />
   );
 
-  const SearchLabel = () => (
+  const searchLabel = () => (
     <Image
       alt='Icon'
       className={styles.iconRefresh}
@@ -106,8 +105,10 @@ export default function Home() {
       <div className={styles.section}>
         <div className={styles.filter}>
           <InputSearch getValue={(val) => getSearchValue(val)} />
-          <Button label={<SearchLabel />} onClick={updateData} />
-          <Button label={<RefreshLabel />} onClick={refreshData} />
+          <div className={styles.filterAction}>
+            <Button label={searchLabel()} onClick={updateData} />
+            <Button label={refreshLabel()} onClick={refreshData} />
+          </div>
         </div>
         {loading ? (
           <div className={styles.loading}>
@@ -115,10 +116,9 @@ export default function Home() {
           </div>
         ) : (
           <div
-            className={styles.list}
-            style={{
-              gridTemplateColumns: gridColumn(data),
-            }}
+            className={`${styles.list} ${
+              data.length === 1 ? styles.listOne : ''
+            }`}
           >
             {data.map((i, idx) => (
               <Card data={i} key={idx} onClick={(id) => addData(id)} />

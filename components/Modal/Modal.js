@@ -27,11 +27,13 @@ export default function Modal(props) {
             {data.stats?.map((i, idx) => (
               <div key={idx} className={styles.stat}>
                 <div className={styles.statName}>{i.stat.name}</div>
-                <div
-                  className={styles.statBar}
-                  style={{ width: i.base_stat }}
-                />
-                <div className={styles.statPrecentage}>{i.base_stat}</div>
+                <div className={styles.statInfo}>
+                  <div
+                    className={styles.statBar}
+                    style={{ width: i.base_stat }}
+                  />
+                  <div className={styles.statPrecentage}>{i.base_stat}</div>
+                </div>
               </div>
             ))}
           </div>

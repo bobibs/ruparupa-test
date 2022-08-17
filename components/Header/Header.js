@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import ImageWrapper from '../ImageWrapper';
 import IconBag from '../../public/ic-bag.svg';
 import IconHome from '../../public/ic-home.svg';
 import IconPokeball from '../../public/ic-pokeball.svg';
@@ -19,26 +20,17 @@ export default function Header() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.section}>
-        <div className={styles.logo} onClick={() => clickMenu('/')}>
-          <div className={styles.images}>
-            <Image
-              alt='Icon'
-              src={IconPokeball}
-              layout='fill'
-              objectFit='contain'
-            />
-          </div>
-          <div className={styles.name}>Pokedex</div>
-        </div>
+      <div className={styles.sectionLeft} onClick={() => clickMenu('/')}>
+        <ImageWrapper alt='Icon' src={IconPokeball} />
+        <div className={styles.name}>Pokedex</div>
       </div>
-      <div className={`${styles.section} ${styles.sectionRight}`}>
+      <div className={styles.sectionRight}>
         <div className={styles.menu} onClick={() => clickMenu('/')}>
-          <Image alt='Icon' height='25' src={IconHome} width='25' />
+          <ImageWrapper alt='Icon' className={styles.icon} src={IconHome} />
           <div className={`${styles.line} ${pathName === '' && styles.path}`} />
         </div>
         <div className={styles.menu} onClick={() => clickMenu('/bag')}>
-          <Image alt='Icon' height='25' src={IconBag} width='25' />
+          <ImageWrapper alt='Icon' className={styles.icon} src={IconBag} />
           <div
             className={`${styles.line} ${pathName === 'bag' && styles.path}`}
           />

@@ -4,7 +4,7 @@
     border: 0.125rem solid v.$primary-color;
     border-radius: 0.25rem;
     display: grid;
-    grid-template-columns: 17.5rem 2rem;
+    grid-template-columns: auto 2rem;
 }
 
 .input {
@@ -26,4 +26,16 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+@media screen and (max-width : 414px) {
+    .input {
+        height: 3rem;
+        width: 18.5rem;
+        font-size: 1rem;
+    }
+
+    .input::placeholder {
+        font-size: 1rem;
+    }
 }

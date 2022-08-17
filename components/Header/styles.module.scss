@@ -5,25 +5,23 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 2.75rem;
 }
 
-.section {
+.sectionLeft {
     display: grid;
     grid-template-columns: auto auto;
     gap: 0 1rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
 }
 
 .sectionRight {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0 1rem;
+    justify-content: center;
+    align-items: center;
     gap: 0 2rem;
 }
 
@@ -31,7 +29,6 @@
     color: v.$white-color;
     font-weight: 600;
     font-size: 1.25rem;
-    margin: 0 0 0 1rem;
 }
 
 .menu {
@@ -41,28 +38,20 @@
     cursor: pointer;
 }
 
+.icon {
+    height: 1.75rem;
+    width: 1.75rem;
+}
+
 .line {
-    height: 0.125rem;
-    width: 1rem;
+    height: 0.25rem;
+    width: 1.75rem;
     background: transparent;
     position: absolute;
-    top: 3.25rem;
+    top: 3.125rem;
+    border-radius: 0.25rem;
 }
 
 .path {
     background: v.$primary-color;
-}
-
-.images {
-    position: relative;
-    height: 2rem;
-    width: 2rem;
-}
-
-.icon {
-    position: relative;
-    height: 1.75rem;
-    width: 1.75rem;
-    display: flex;
-    align-items: center;
 }

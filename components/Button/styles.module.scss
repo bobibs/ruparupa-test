@@ -17,3 +17,9 @@
 .root:hover {
     opacity: 1;
 }
+
+@media screen and (max-width : 414px) {
+    .root {
+        padding: 0.5rem;
+    }
+}

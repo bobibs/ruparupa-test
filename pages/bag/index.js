@@ -80,10 +80,9 @@ export default function Bag() {
           </div>
         ) : (
           <div
-            className={styles.data}
-            style={{
-              gridTemplateColumns: gridColumn(data),
-            }}
+            className={`${styles.data} ${
+              data.length === 1 ? styles.dataOne : ''
+            }`}
           >
             {data.map((i, idx) => (
               <Card
