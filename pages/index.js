@@ -11,7 +11,7 @@ import Card from '../components/Card';
 import Header from '../components/Header';
 import InputSearch from '../components/InputSearch';
 import Loading from '../components/Loading';
-import SuccessNotification from '../components/SuccessNotification';
+import ModalNotification from '../components/ModalNotification';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
@@ -92,7 +92,7 @@ export default function Home() {
     if (show) {
       setTimeout(() => {
         setShow(false);
-      }, 1000);
+      }, 5000);
     }
   }, [show]);
 
@@ -125,7 +125,15 @@ export default function Home() {
             ))}
           </div>
         )}
-        <SuccessNotification label='Added' show={show} variant='success' />
+        {show ? (
+          <ModalNotification
+            label='Added'
+            onClose={() => setShow(false)}
+            variant='success'
+          />
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

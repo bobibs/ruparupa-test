@@ -7,7 +7,7 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import Loading from '../../components/Loading';
-import SuccessNotification from '../../components/SuccessNotification';
+import ModalNotification from '../../components/ModalNotification';
 import styles from '../../styles/Bag.module.scss';
 
 export default function Bag() {
@@ -53,7 +53,7 @@ export default function Bag() {
     if (show) {
       setTimeout(() => {
         setShow(false);
-      }, 1000);
+      }, 5000);
     }
   }, [show]);
 
@@ -79,11 +79,16 @@ export default function Bag() {
           ) : (
             <div
               className={`${styles.data} ${
-                data.length === 1 ? styles.dataOne : ''
+                data.length >= 5 ? styles.dataGap : ''
               }`}
             >
               {data.map((i, idx) => (
                 <Card
+                  className={
+                    data.length < 5 && idx !== data.length - 1
+                      ? styles.card
+                      : ''
+                  }
                   data={i}
                   key={idx}
                   onClick={(id) => deleteData(id)}
@@ -94,7 +99,15 @@ export default function Bag() {
           )}
         </div>
       )}
-      <SuccessNotification label='Deleted' show={show} variant='danger' />
+      {show ? (
+        <ModalNotification
+          label='Deleted'
+          onClose={() => setShow(false)}
+          variant='danger'
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 }

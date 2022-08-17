@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import Image from 'next/image';
 import { getDetailData } from '../../pages/api';
 import Loading from '../Loading';
-import Modal from '../Modal';
+import ModalInformation from '../ModalInformation';
 import IconAdd from '../../public/ic-add.svg';
 import IconDelete from '../../public/ic-delete.svg';
 import IconInfo from '../../public/ic-info.svg';
 import styles from './styles.module.scss';
 
 export default function Card(props) {
-  const { data, onClick, variant } = props;
+  const { className, data, onClick, variant } = props;
   const [detail, setDetail] = useState({});
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const classes = [styles.root, className].filter(Boolean).join(' ');
 
   useEffect(() => {
     setLoading(true);
@@ -40,7 +41,7 @@ export default function Card(props) {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes}>
       <div className={styles.images}>
         <Image
           alt='Pokemon'
@@ -81,18 +82,24 @@ export default function Card(props) {
           />
         )}
       </div>
-      {show ? <Modal data={detail} onClose={() => setShow(false)} /> : ''}
+      {show ? (
+        <ModalInformation data={detail} onClose={() => setShow(false)} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
 
 Card.defaultProps = {
+  className: '',
   data: {},
   onClick: () => {},
   variant: 'add',
 };
 
 Card.propTypes = {
+  className: PropTypes.string,
   data: PropTypes.object,
   onClick: PropTypes.func,
   variant: PropTypes.oneOf(['add', 'delete']),

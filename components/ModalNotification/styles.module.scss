@@ -1,0 +1,39 @@
+@use '../../styles/variables' as v;
+
+.root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(209, 209, 209, 0.5);
+    z-index: 1;
+}
+
+.modal {
+    background: v.$background-color;
+    border-radius: 0.5rem;
+    width: 20rem;
+}
+
+.content {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.success {
+    color: v.$success-color;
+}
+
+.danger {
+    color: v.$danger-color;
+}

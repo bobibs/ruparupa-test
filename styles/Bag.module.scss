@@ -41,13 +41,16 @@
 .data {
     display: grid;
     grid-template-columns: repeat(5, auto);
-    gap: 3rem;
     padding: 2rem;
     min-height: 21rem;
 }
 
-.dataOne {
-    grid-template-columns: auto !important;
+.dataGap {
+    gap: 3rem;
+}
+
+.card {
+    margin: 0 2rem 0 0;
 }
 
 .loading {
@@ -70,5 +73,9 @@
 
     .noText {
         font-size: 1.75rem;
+    }
+
+    .card {
+        margin: 0;
     }
 }

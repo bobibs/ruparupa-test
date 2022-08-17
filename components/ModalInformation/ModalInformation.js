@@ -4,7 +4,7 @@ import Image from 'next/image';
 import IconClear from '../../public/ic-clear.svg';
 import styles from './styles.module.scss';
 
-export default function Modal(props) {
+export default function ModalInformation(props) {
   const { data, onClose } = props;
 
   return (
@@ -43,12 +43,12 @@ export default function Modal(props) {
   );
 }
 
-Modal.defaultProps = {
+ModalInformation.defaultProps = {
   data: {},
   onClose: () => {},
 };
 
-Modal.propTypes = {
+ModalInformation.propTypes = {
   data: PropTypes.object,
   onClose: PropTypes.func,
 };
