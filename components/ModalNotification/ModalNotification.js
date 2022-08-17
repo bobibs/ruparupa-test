@@ -14,7 +14,7 @@ export default function ModalNotification(props) {
           className={`${styles.content} ${styles[variant]}`}
           onClick={onClose}
         >
-          Successfully {label}
+          Data has beed {variant === 'success' ? 'added' : 'deleted'}!
           <Image alt='Icon' height='25' src={IconClear} width='25' />
         </div>
       </div>
