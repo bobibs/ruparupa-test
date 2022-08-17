@@ -56,45 +56,43 @@ export default function Bag() {
     }
   }, [show]);
 
-  if (loading) {
-    return (
-      <div className={styles.loading}>
-        <Loading />
-      </div>
-    );
-  }
-
   return (
     <div
       className={styles.root}
       style={{ marginBottom: data.length > 5 ? '2rem' : '0' }}
     >
       <Header />
-      <div className={styles.section}>
-        {!data.length ? (
-          <div className={styles.noData}>
-            <div className={styles.noText}>No Pokemon Selected.</div>
-            <div className={styles.noButton} onClick={clickBack}>
-              <Button label='Back To Home' />
+      {loading ? (
+        <div className={styles.loading}>
+          <Loading />
+        </div>
+      ) : (
+        <div className={styles.section}>
+          {!data.length ? (
+            <div className={styles.noData}>
+              <div className={styles.noText}>No Pokemon Selected.</div>
+              <div className={styles.noButton} onClick={clickBack}>
+                <Button label='Back To Home' />
+              </div>
             </div>
-          </div>
-        ) : (
-          <div
-            className={`${styles.data} ${
-              data.length === 1 ? styles.dataOne : ''
-            }`}
-          >
-            {data.map((i, idx) => (
-              <Card
-                data={i}
-                key={idx}
-                onClick={(id) => deleteData(id)}
-                variant='delete'
-              />
-            ))}
-          </div>
-        )}
-      </div>
+          ) : (
+            <div
+              className={`${styles.data} ${
+                data.length === 1 ? styles.dataOne : ''
+              }`}
+            >
+              {data.map((i, idx) => (
+                <Card
+                  data={i}
+                  key={idx}
+                  onClick={(id) => deleteData(id)}
+                  variant='delete'
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
       <SuccessNotification label='Deleted' show={show} variant='danger' />
     </div>
   );
